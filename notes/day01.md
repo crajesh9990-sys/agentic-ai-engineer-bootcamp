@@ -31,3 +31,41 @@ While traditional chatbots excel at providing straightforward, pre-programmed re
 * Interact with humans in a more dynamic, unpredictable way
 
 However, this increased autonomy also raises concerns about accountability, trustworthiness, and potential risks associated with agentic AI.
+
+>> Interview questions
+Q1. What is Agentic AI?
+
+Expected answer:
+
+Agentic AI refers to AI systems that can autonomously plan tasks, use tools, maintain context or memory, and execute multi-step workflows to achieve goals, rather than only responding to a single prompt.
+
+Q2. What is an LLM?
+
+Be ready to explain:
+
+Large Language Model
+Tokens
+Context Window
+Parameters
+Inference (high level)
+Q3. Why FastAPI instead of Spring Boot for AI services?
+
+Key points:
+
+Fast development
+Native Python ecosystem
+Easy integration with AI libraries
+Automatic OpenAPI documentation
+Async support
+
+Also mention that Spring Boot is still an excellent choice for enterprise orchestration, API gateways, authentication, and business services.
+
+Q4. Why is Python dominant in AI?
+
+Mention:
+
+Extensive AI/ML ecosystem
+First-class library support
+Research community adoption
+Rapid prototyping
+Simpler syntax for experimentation
