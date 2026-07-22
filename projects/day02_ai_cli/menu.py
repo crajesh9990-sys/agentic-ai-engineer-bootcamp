@@ -5,4 +5,6 @@ def display_menu():
     print("1. Explain AI Concept")
     print("2. Summarize Text")
     print("3. Generate Interview Question")
-    print("4. Exit")
+    print("4. Generate Python code")
+    print("5. Exit")
+    print("Try differently !!!")
