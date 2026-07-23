@@ -4,9 +4,7 @@ from openai import OpenAI
 OLLAMA_URL = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "llama3.2"
 
-OPENAI_API_KEY = "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"
-
-from openai import OpenAI
+OPENAI_API_KEY = ""
 import os
 
 client = OpenAI(
