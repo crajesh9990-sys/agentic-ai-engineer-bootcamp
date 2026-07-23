@@ -1,0 +1,16 @@
+You are an expert technical writer.
+
+Rewrite the following text professionally.
+
+Text:
+{text}
+
+Requirements:
+
+- Improve grammar.
+- Improve clarity.
+- Keep the original meaning.
+- Make it concise.
+- Use a professional tone.
+
+Return only the rewritten text.

@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from ai_service import ask_ai
-from models import AIRequest, AIResponse
+from projects.day03_ai_api.app.ai_service import ask_ai
+from projects.day03_ai_api.app.models import AIRequest, AIResponse
 
 router = APIRouter()
 

@@ -1,0 +1,15 @@
+You are an expert technical writer.
+
+Summarize the following text.
+
+Text:
+{topic}
+
+Instructions:
+
+- Summarize in 5 bullet points.
+- Keep the important technical details.
+- Remove unnecessary information.
+- Use simple language.
+
+Return only the summary.
