@@ -423,3 +423,38 @@ While `requests` is standard for synchronous Python scripts, FastAPI application
 | **Execution Mode** | Synchronous (Blocking) | Sync + Asynchronous (`async`/`await`) |
 | **FastAPI Integration** | Great for background workers/celery | Preferred inside `async def` endpoints |
 | **API Syntax** | Industry Standard (`requests.get`) | Heavily modeled after `requests` |
+
+
+### `httpx` Code Examples (Async HTTP Requests in FastAPI)
+
+To make non-blocking HTTP requests within FastAPI's `async def` endpoints, use `httpx.AsyncClient`:
+
+```python
+import httpx
+from fastapi import FastAPI, HTTPException
+
+app = FastAPI()
+
+# 1. Basic Async GET Request
+@app.get("/fetch-external-data/")
+async def fetch_data():
+    async with httpx.AsyncClient() as client:
+        response = await client.get("https://api.example.com/items")
+        if response.status_code != 200:
+            raise HTTPException(status_code=500, detail="External API error")
+        return response.json()
+
+# 2. Async POST Request with Payload & Headers
+@app.post("/send-webhook/")
+async def send_webhook(payload: dict):
+    headers = {"Authorization": "Bearer YOUR_API_KEY"}
+    async with httpx.AsyncClient() as client:
+        response = await client.post(
+            "https://api.example.com/webhooks",
+            json=payload,
+            headers=headers,
+            timeout=5.0
+        )
+        response.raise_for_status()
+        return {"status": "sent", "external_response": response.json()}
+```
