@@ -157,3 +157,146 @@ print(type(user.id)) # <class 'int'>
 ```
 
 ---
+
+## 7. FastAPI Dependency Injection (`Depends`)
+
+FastAPI comes with a built-in **Dependency Injection (DI)** system using `Depends()`. It allows you to inject shared logic, database sessions, authentication handlers, or query parameters directly into path operation functions.
+
+### Why Use Dependency Injection?
+* **Code Reuse**: Avoid repeating code across multiple endpoints (e.g., pagination, auth checks).
+* **Database Connection Management**: Automatically open connections before handling requests and safely close them afterward (yield dependencies).
+* **Easy Testing & Mocking**: Easily override dependencies during automated testing.
+
+### 1. Basic Dependency Example (Shared Query Parameters)
+
+```python
+from typing import Annotated
+from fastapi import FastAPI, Depends
+
+app = FastAPI()
+
+# 1. Dependency Function
+def common_parameters(q: str | None = None, skip: int = 0, limit: int = 10):
+    return {"q": q, "skip": skip, "limit": limit}
+
+# 2. Injecting into Route Functions using Annotated
+@app.get("/items/")
+async def read_items(commons: Annotated[dict, Depends(common_parameters)]):
+    return {"message": "Fetching items", "params": commons}
+
+@app.get("/users/")
+async def read_users(commons: Annotated[dict, Depends(common_parameters)]):
+    return {"message": "Fetching users", "params": commons}
+```
+
+### 2. Advanced: Cleanup with `yield` (Database Sessions)
+
+You can use `yield` instead of `return` to create teardown steps (e.g., closing a database session after the response is sent).
+
+```python
+from typing import Generator, Annotated
+from fastapi import FastAPI, Depends
+
+def get_db() -> Generator:
+    db = "DB_SESSION_CONNECTED"  # Simulate DB Connection
+    try:
+        yield db
+    finally:
+        print("Closing DB connection...")  # Executes after response is sent
+
+@app.get("/data/")
+async def read_data(db: Annotated[str, Depends(get_db)]):
+    return {"db_status": db}
+```
+
+---
+
+## 8. Understanding `Annotated` and `Generator` in FastAPI
+
+Both `Annotated` and `Generator` are standard Python typing tools that play a major role in modern FastAPI development.
+
+### A. `typing.Annotated`
+
+Introduced in **Python 3.9** (PEP 593), `Annotated` lets you attach framework-specific metadata to standard type hints without altering the type itself.
+
+#### Syntax Structure
+`Annotated[BaseType, Metadata]`
+
+#### Why FastAPI prefers `Annotated`:
+1. **DRY Defaults**: You can define reusable types with pre-built dependencies or validations.
+2. **Standard Python Compliance**: IDEs recognize the variable's primary type (`int`, `str`, `dict`), enabling full autocompletion and static type checking (`mypy`).
+
+#### Examples of `Annotated` Usage:
+
+```python
+from typing import Annotated
+from fastapi import FastAPI, Depends, Query, Header
+
+app = FastAPI()
+
+# 1. Custom Metadata / Validation
+# Here `q` is a string, but FastAPI validates min_length=3
+@app.get("/search/")
+async def search(q: Annotated[str, Query(min_length=3, max_length=50)]):
+    return {"query": q}
+
+# 2. Dependency Injection Alias
+# Define once, reuse everywhere cleanly
+DbDep = Annotated[str, Depends(get_db)]
+
+@app.get("/users/")
+async def get_users(db: DbDep):
+    return {"db": db}
+
+# 3. Request Header Extraction
+@app.get("/user-agent/")
+async def get_agent(user_agent: Annotated[str | None, Header()] = None):
+    return {"User-Agent": user_agent}
+```
+
+---
+
+### B. `typing.Generator` (and `AsyncGenerator`)
+
+In Python typing, `Generator` describes functions that use `yield`. In FastAPI, generator dependencies are used for resource management (context managers, database connections, file handles).
+
+#### Syntax Structure
+`Generator[YieldType, SendType, ReturnType]`
+* **`YieldType`**: What the dependency yields to the route function (e.g., `Session`).
+* **`SendType`**: What can be sent into the generator (usually `None`).
+* **`ReturnType`**: What the generator returns when complete (usually `None`).
+
+#### Sync vs. Async Generator Examples:
+
+```python
+from typing import Generator, AsyncGenerator, Annotated
+from fastapi import FastAPI, Depends
+
+app = FastAPI()
+
+# Synchronous Resource Generator
+def get_sync_resource() -> Generator[str, None, None]:
+    resource = "SYNC_CONNECTION_OPEN"
+    try:
+        yield resource  # Yield control to the path operation
+    finally:
+        print("Sync Resource Closed")
+
+# Asynchronous Resource Generator
+async def get_async_resource() -> AsyncGenerator[str, None]:
+    resource = "ASYNC_CONNECTION_OPEN"
+    try:
+        yield resource  # Yield control to async path operation
+    finally:
+        print("Async Resource Closed")
+
+@app.get("/sync-test")
+def test_sync(res: Annotated[str, Depends(get_sync_resource)]):
+    return {"resource": res}
+
+@app.get("/async-test")
+async def test_async(res: Annotated[str, Depends(get_async_resource)]):
+    return {"resource": res}
+```
+
+---
