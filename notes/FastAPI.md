@@ -300,3 +300,75 @@ async def test_async(res: Annotated[str, Depends(get_async_resource)]):
 ```
 
 ---
+
+## 9. Deep Dive into Pydantic Models
+
+In FastAPI, **Pydantic Models** are classes that define the structure, validation rules, and default values of your request and response payloads. They inherit from `pydantic.BaseModel`.
+
+### Core Features & Patterns
+
+#### 1. Field Validation (`Field`)
+The `Field` function allows setting constraints like length, numerical boundaries, regex patterns, or default values:
+
+```python
+from pydantic import BaseModel, Field
+
+class Product(BaseModel):
+    name: str = Field(..., min_length=2, max_length=100, description="Name of product")
+    price: float = Field(..., gt=0, description="Price must be strictly positive")
+    quantity: int = Field(default=1, ge=1, le=50)
+```
+
+#### 2. Custom Field Validators (`@field_validator`)
+You can define custom validation rules for individual attributes:
+
+```python
+from pydantic import BaseModel, field_validator
+
+class UserRegistration(BaseModel):
+    username: str
+    password: str
+
+    @field_validator('password')
+    @classmethod
+    def validate_password_strength(cls, v: str) -> str:
+        if len(v) < 8:
+            raise ValueError('Password must be at least 8 characters long')
+        if not any(char.isdigit() for char in v):
+            raise ValueError('Password must contain at least one digit')
+        return v
+```
+
+#### 3. Nested Models
+Models can be nested inside other models to represent complex, hierarchical JSON schemas:
+
+```python
+from pydantic import BaseModel, EmailStr
+
+class Address(BaseModel):
+    street: str
+    city: str
+    postal_code: str
+
+class UserProfile(BaseModel):
+    id: int
+    email: EmailStr
+    address: Address  # Nested model definition
+```
+
+#### 4. Serializing & Exporting Data (`model_dump` & `model_dump_json`)
+* `model.model_dump()`: Converts a Pydantic model into a native Python dictionary.
+* `model.model_dump_json()`: Converts a Pydantic model directly into a JSON string.
+
+```python
+user = UserProfile(
+    id=1,
+    email="dev@example.com",
+    address=Address(street="123 Main St", city="TechCity", postal_code="600001")
+)
+
+dict_data = user.model_dump()
+json_string = user.model_dump_json()
+```
+
+---
