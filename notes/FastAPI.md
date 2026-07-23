@@ -372,3 +372,54 @@ json_string = user.model_dump_json()
 ```
 
 ---
+
+*Updated FastAPI Technical Reference Guide.*
+
+
+---
+
+## 10. Python Requests Library Integration
+
+The `requests` library is the standard Python library for making synchronous HTTP requests to external REST APIs or web services.
+
+### Core HTTP Methods & Usage
+
+```python
+import requests
+
+# 1. GET Request with Query Parameters
+response = requests.get(
+    "https://api.example.com/items",
+    params={"category": "electronics", "page": 1},
+    headers={"Authorization": "Bearer YOUR_TOKEN"}
+)
+
+if response.status_code == 200:
+    data = response.json()  # Automatically parses JSON response
+    print("Fetched Data:", data)
+
+# 2. POST Request with JSON Payload
+payload = {"name": "Laptop", "price": 999.99}
+res_post = requests.post("https://api.example.com/items", json=payload)
+
+# 3. Handling Responses & Errors
+try:
+    response = requests.get("https://api.example.com/data", timeout=5)
+    response.raise_for_status()  # Raises HTTPError for 4xx/5xx codes
+except requests.exceptions.Timeout:
+    print("The request timed out.")
+except requests.exceptions.HTTPError as err:
+    print(f"HTTP Error occurred: {err}")
+except requests.exceptions.RequestException as e:
+    print(f"An unexpected error occurred: {e}")
+```
+
+### Key Differences: `requests` (Sync) vs. `httpx` (Async in FastAPI)
+
+While `requests` is standard for synchronous Python scripts, FastAPI applications performing external API calls often use **`httpx`** or **`aiohttp`** to avoid blocking the ASGI event loop.
+
+| Feature | `requests` | `httpx` |
+| :--- | :--- | :--- |
+| **Execution Mode** | Synchronous (Blocking) | Sync + Asynchronous (`async`/`await`) |
+| **FastAPI Integration** | Great for background workers/celery | Preferred inside `async def` endpoints |
+| **API Syntax** | Industry Standard (`requests.get`) | Heavily modeled after `requests` |
