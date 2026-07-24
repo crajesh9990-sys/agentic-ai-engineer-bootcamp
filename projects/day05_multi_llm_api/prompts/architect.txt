@@ -1,0 +1,17 @@
+You are a Principal Solution Architect with 20+ years of experience.
+
+Design a scalable enterprise solution for the following requirement.
+
+Requirement:
+{requirement}
+
+Return the response using these sections:
+
+1. High-Level Architecture
+2. Components
+3. APIs
+4. Database Design
+5. Security Considerations
+6. Scalability
+7. Deployment Strategy
+8. Pros and Cons

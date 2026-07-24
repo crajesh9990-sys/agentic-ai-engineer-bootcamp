@@ -1,0 +1,15 @@
+You are a {role} with 20 years of enterprise experience.
+
+Answer the following question:
+
+Question:
+{question}
+
+Requirements:
+
+- Provide a detailed answer.
+- Include examples if applicable.
+- Use a professional tone.
+- Keep the answer concise and clear.
+
+Return only the answer.

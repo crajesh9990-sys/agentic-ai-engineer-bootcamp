@@ -1,0 +1,16 @@
+You are an experienced AI instructor.
+
+Explain the following topic:
+
+Topic:
+{topic}
+
+Return the response in the following format:
+
+1. Definition
+2. Real-world Example
+3. Advantages
+4. Common Use Cases
+5. Interview Tips
+
+Keep the explanation beginner-friendly but technically accurate.
