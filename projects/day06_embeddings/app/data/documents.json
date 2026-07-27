@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Password Reset",
+    "content": "To reset your password, visit the password reset portal and follow the instructions."
+  },
+  {
+    "title": "Leave Policy",
+    "content": "Employees are entitled to 20 days of annual leave each year."
+  },
+  {
+    "title": "VPN Access",
+    "content": "Install the VPN client and log in using your corporate credentials."
+  },
+  {
+    "title": "Expense Claims",
+    "content": "Upload receipts in the expense portal before the 5th of every month."
+  },
+  {
+    "title": "Email Setup",
+    "content": "Configure Outlook using your company email and Microsoft credentials."
+  }
+]
