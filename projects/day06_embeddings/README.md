@@ -462,7 +462,7 @@ git push
 
 **Answer**
 
-An embedding is a dense numerical vector representing the semantic meaning of text.
+An embedding is a dense numerical vector that represents the semantic meaning of data such as text, images, or audio. Instead of storing the actual words, an embedding model converts the input into a fixed-length vector where semantically similar inputs are located close together in vector space.
 
 ---
 
@@ -471,6 +471,19 @@ An embedding is a dense numerical vector representing the semantic meaning of te
 ### Difference between embeddings and LLMs?
 
 **Answer**
+
+An embedding model converts input into vectors that capture semantic meaning. It is optimized for retrieval and similarity search.
+
+An LLM generates natural language based on prompts and context. It is optimized for reasoning and text generation.
+
+| Embedding Model   | LLM                     |
+| ----------------- | ----------------------- |
+| Generates vectors | Generates text          |
+| Used for search   | Used for answering      |
+| Retrieval         | Reasoning               |
+| Fast              | Computationally heavier |
+| Smaller models    | Larger models           |
+
 
 LLMs generate text.
 

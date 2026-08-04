@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug day09 Conversational RAG",
+            "request": "launch",
+            "type": "debugpy",
+            "module": "uvicorn",
+            "cwd": "${workspaceFolder}/projects/day09_conversational_rag/app",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/projects/day09_conversational_rag/app"
+            },
+            "args": [
+                "main:app",
+                "--reload",
+                "--host",
+                "127.0.0.1",
+                "--port",
+                "8000"
+            ],
+            "console": "integratedTerminal"
+        }
+    ]
+}

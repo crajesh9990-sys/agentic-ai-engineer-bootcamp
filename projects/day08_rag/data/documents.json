@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1",
+        "title": "Password Reset",
+        "content": "To reset your password visit password.company.com."
+    },
+    {
+        "id": "2",
+        "title": "VPN Access",
+        "content": "Install Global Protect VPN and login using corporate credentials."
+    },
+    {
+        "id": "3",
+        "title": "Leave Policy",
+        "content": "Employees receive twenty annual leave days every year."
+    },
+    {
+        "id": "4",
+        "title": "Laptop Request",
+        "content": "Create a ServiceNow request for a new laptop."
+    },
+    {
+        "id": "5",
+        "title": "Expense Claims",
+        "content": "Submit receipts before the fifth of every month."
+    }
+]   
