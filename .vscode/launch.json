@@ -1,14 +1,15 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         {
-            "name": "Debug day09 Conversational RAG",
+            "name": "Debug day10_enterprise_agent",
             "request": "launch",
             "type": "debugpy",
             "module": "uvicorn",
-            "cwd": "${workspaceFolder}/projects/day09_conversational_rag/app",
+            "cwd": "${workspaceFolder}/projects/day10_enterprise_agent/app",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/projects/day09_conversational_rag/app"
+                "PYTHONPATH": "${workspaceFolder}/projects/day10_enterprise_agent/app"
             },
             "args": [
                 "main:app",

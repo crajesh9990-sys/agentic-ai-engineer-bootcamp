@@ -1,0 +1,143 @@
+[
+  {
+    "id": "DOC001",
+    "title": "Password Reset Policy",
+    "department": "IT",
+    "category": "Authentication",
+    "author": "IT Security Team",
+    "version": "2.1",
+    "tags": [
+      "password",
+      "reset",
+      "login",
+      "authentication"
+    ],
+    "content": "Employees can reset their password by visiting https://password.company.com. Identity verification using Multi-Factor Authentication (MFA) is required before a password can be changed. Temporary passwords expire after 24 hours. Contact the IT Service Desk if the self-service portal is unavailable."
+  },
+  {
+    "id": "DOC002",
+    "title": "VPN Access Guide",
+    "department": "IT",
+    "category": "Networking",
+    "author": "Network Team",
+    "version": "1.8",
+    "tags": [
+      "vpn",
+      "remote",
+      "network"
+    ],
+    "content": "Employees working remotely must connect using the GlobalProtect VPN client. Multi-Factor Authentication is mandatory. Split tunnelling is disabled. VPN sessions automatically disconnect after 10 minutes of inactivity."
+  },
+  {
+    "id": "DOC003",
+    "title": "Annual Leave Policy",
+    "department": "Human Resources",
+    "category": "Leave",
+    "author": "HR Team",
+    "version": "3.0",
+    "tags": [
+      "leave",
+      "vacation",
+      "holiday"
+    ],
+    "content": "Full-time employees receive 20 annual leave days each calendar year. Up to 5 unused days may be carried forward with manager approval. Leave requests must be submitted through the HR Portal."
+  },
+  {
+    "id": "DOC004",
+    "title": "Employee Onboarding Guide",
+    "department": "Human Resources",
+    "category": "Onboarding",
+    "author": "HR Team",
+    "version": "1.5",
+    "tags": [
+      "joining",
+      "employee",
+      "orientation"
+    ],
+    "content": "New employees must complete orientation, security awareness training, and mandatory compliance training during their first week. Laptop and email accounts are provisioned before the joining date."
+  },
+  {
+    "id": "DOC005",
+    "title": "Laptop Request Procedure",
+    "department": "IT",
+    "category": "Hardware",
+    "author": "Asset Management",
+    "version": "2.0",
+    "tags": [
+      "laptop",
+      "hardware",
+      "asset"
+    ],
+    "content": "Employees requiring a new laptop must submit a request through the IT Service Portal. Manager approval is mandatory. Standard delivery time is 5 business days."
+  },
+  {
+    "id": "DOC006",
+    "title": "Email Configuration Guide",
+    "department": "IT",
+    "category": "Email",
+    "author": "Messaging Team",
+    "version": "2.3",
+    "tags": [
+      "email",
+      "outlook",
+      "office365"
+    ],
+    "content": "Company email is hosted on Microsoft 365. Outlook is the recommended client. Mobile devices must be enrolled in Mobile Device Management before email synchronization is enabled."
+  },
+  {
+    "id": "DOC007",
+    "title": "Information Security Policy",
+    "department": "Security",
+    "category": "Cyber Security",
+    "author": "Security Office",
+    "version": "5.1",
+    "tags": [
+      "security",
+      "policy",
+      "compliance"
+    ],
+    "content": "Employees must use Multi-Factor Authentication on all corporate accounts, lock their devices when unattended, and report suspected phishing emails immediately. Sensitive information must not be stored on personal devices."
+  },
+  {
+    "id": "DOC008",
+    "title": "Travel Expense Policy",
+    "department": "Finance",
+    "category": "Expenses",
+    "author": "Finance Team",
+    "version": "2.4",
+    "tags": [
+      "travel",
+      "expense",
+      "reimbursement"
+    ],
+    "content": "Travel expenses must be submitted within 30 days of completing business travel. Original receipts are required for reimbursement. Claims are submitted using the Finance Portal."
+  },
+  {
+    "id": "DOC009",
+    "title": "Software Installation Policy",
+    "department": "IT",
+    "category": "Software",
+    "author": "Desktop Support",
+    "version": "1.6",
+    "tags": [
+      "software",
+      "installation",
+      "applications"
+    ],
+    "content": "Only approved software may be installed on company devices. Employees requiring additional software must submit an IT request. Administrator privileges are not provided to standard users."
+  },
+  {
+    "id": "DOC010",
+    "title": "Incident Reporting Procedure",
+    "department": "Security",
+    "category": "Incident Management",
+    "author": "Security Operations",
+    "version": "4.0",
+    "tags": [
+      "incident",
+      "security",
+      "support"
+    ],
+    "content": "Security incidents must be reported immediately through the Security Portal or by calling the Security Operations Center. Do not investigate suspected malware yourself. Disconnect the affected device from the network if instructed by IT."
+  }
+]
