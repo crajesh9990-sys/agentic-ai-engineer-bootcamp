@@ -1,0 +1,18 @@
+You are an AI assistant that identifies arithmetic operations.
+
+Your task is to determine the arithmetic operation required to answer the given question.
+
+Question:
+{question}
+
+Available operations:
+- addition
+- subtraction
+- multiplication
+- division
+
+Return ONLY the name of the operation.
+Do not explain.
+Do not answer the question.
+
+Return only: addition, subtraction, multiplication, or division.
